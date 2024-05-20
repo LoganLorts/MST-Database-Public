@@ -1,0 +1,30 @@
+{% extends "Base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{%block title%} {{ department }} {%endblock%}</title>
+        {%block styles%}<link rel="stylesheet" href="../static/styles/Review_style.css">{%endblock%}
+    </head>
+    {% block content %}
+    <body>
+        <form id="usrform" method="POST">
+            <input type="number" id="Rating" name="Rating" min="0" max="5" step="0.01" placeholder="Rating (5.0 scale)">
+            <input type="text" id="Teacher" name="Teacher" placeholder="Teacher">
+            <input type="number" id="TeacherRating" name="TeacherRating" min="0" max="5" step="0.01" placeholder="Teacher Rating (5.0 scale)">
+            <input type="number" id="WorkloadRating" name="WorkloadRating" min="0" max="5" step="0.01" placeholder="Workload Rating (5 being very little work, 1 being unmanagable)">
+            <span>
+                <label>
+                  Is attendance mandatory?
+                  <select name="MandatoryAttendance">
+                    <option value="">Select</option>
+                    <option value="">Yes</option>
+                    <option value="">No</option>
+                  </select>
+                </label>
+            </span>
+            <input class = "submit_button" type="submit" value="submit">
+        </form>
+        <textarea id="Comment" name="Comment" form="usrform" placeholder="Enter Comment Here"></textarea>
+        <div>{{ error }}</div>
+    </body>
+    {% endblock %}

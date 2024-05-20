@@ -1,0 +1,67 @@
+{% extends "Base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %} {{ class_name}} {%endblock%}</title>
+        {%block styles%}<link rel="stylesheet" href="../static/styles/Class_style.css">{%endblock%}
+    </head>
+    {% block content %}
+    <body>
+        <div id="class">
+            <h1>{{class_name}} {{class_code}}</h1>
+            <h2> {{department}} </h2>
+            <p> {{class_info}} </p>
+        </div>
+        {% set DepCode = department + class_code|string %}
+        <div class="leave-review" style="float: right"><a href="{{ url_for('review', DepCode=DepCode) }}"><b>Leave Review</b></a></div>
+        <div class="wrapper">
+            <div class="averages">
+                <h3>Ratings</h3>
+                <p1>Workload Rating: 5 = Easy        0 = Hard</p1>
+                {%for average in avg%}
+                <div class="average">
+                    <label class="teacher-name"><b>{{ average[0] }}</b></label>
+                    <div class="label-row">
+                        <label class="rating-name">Class </label>
+                        <label class="rating-name">Teacher </label>
+                        <label class="workload-label">Workload </label>
+                    </div>
+                    <div class="rating-row">
+                        <label class="class-value"><b>{{average[1]}}</b></label>
+                        <label class="teach-value"><b>{{average[2]}}</b></label>
+                        <label class="work-value"><b>{{average[3]}}</b></label>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>            
+            <div id="reviews">
+                {% for review in reviews %}
+                <div class="review">
+                    <div class="ratings">
+                        <div class="rating-row">
+                            <span class="rating-label">Teacher:</span>
+                            <span class="teacher-label">{{ review[4] }}</span>
+                            <span class="rating-label">Class Rating:</span>
+                            <span class="rating-value">{{ review[0] }}</span>
+                            <span class="rating-label">Teacher Effectiveness:</span>
+                            <span class="rating-value">{{review[1]}}</span>
+                            <span class="rating-label">Workload:</span>
+                            <span class="rating-value">{{review[2]}}</span>
+                            <span class="rating-label">Mandatory Attendance:</span>
+                            <span class="rating-value">{% if review[5]==0 %}
+                                No
+                                {% else %}
+                                Yes
+                                {% endif %}
+                            </span>
+                            </div>
+                        </div>
+                    <p class="review-comment">{{ review[3] }}</p>
+                    </div>
+                {% endfor %}
+                </div>
+        </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

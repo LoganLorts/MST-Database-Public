@@ -1,0 +1,45 @@
+{% extends "Base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{%block title%} {{ admin }} {%endblock%}</title>
+    </head>
+    {% block content %}
+    <body>
+        <div>
+            <form id="admin_add_class" method="POST" action="/Db_add">
+                    <input type="number" id="classCode" name="classCode" placeholder="classCode">
+                    <input type="text" id="classTitle" name="classTitle" placeholder="classTitle">
+                    <input type="text" id="classDep" name="classDep" placeholder="classDep">
+                    <input class = "submit_button" type="submit" name="submit" value="submit_class">
+            </form>
+            <textarea id="Description" name="Description" form="admin_add_class" placeholder="Description"></textarea>
+            <form id="admin_add_teacher" method="POST" action="/Db_add">
+                    <input type="text" id="teacherName" name="teacherName" placeholder="teacherName">
+                    <input type="text" id="teacherEmail" name="teacherEmail" placeholder="teacherEmail">
+                    <input class = "submit_button" type="submit" name="submit" value="submit_teacher">
+            </form>
+            <form id="Select_Comments" method="POST" action="/Db_add">
+                    <input type="text" id="classDep" name="classDep" placeholder="classDep">
+                    <input type="number" id="classCode" name="classCode" placeholder="classCode">
+                    <input class = "submit_button" type="submit" name="submit" value="Select_Comments">
+            </form>
+            {% if reviews is defined and reviews|length > 0 %}
+            <form id="Remove_Comment" method="POST" action="/Db_add">
+                <input type="text" name="classDep" placeholder="classDep" value="{{reviews[0][3]}}">
+                <input type="number" name="classCode" placeholder="classCode" value="{{ reviews[0][4] }}">
+                <input type="text" id="UsrEmail" name="UsrEmail" placeholder="UsrEmail">
+                <input class = "submit_button" type="submit" name="submit" value="Remove_Comment">
+            </form>
+            {% endif %}
+            {% for review in reviews%}
+            <div>
+                <span> {{ review[1] }} </span>
+                <span> {{ review[2] }} </span>
+                <span> {{ review[0] }} </span>
+            </div>
+            {% endfor %}        
+    </div>
+        <div> {{ error }} </div>
+    </body>
+    {% endblock %}

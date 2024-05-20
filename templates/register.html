@@ -1,0 +1,27 @@
+{% extends "Base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block title %}Register{% endblock %}
+            {%block styles%}<link rel="stylesheet" href="../static/styles/Register_style.css">{%endblock%}
+        </title>
+    </head>
+    {% block content %}
+    <body>
+        <h2><b>Register User</b></h2><br>
+        <div id="register">
+            <form action="/register" method="POST">
+                <label>Email</label>
+                <input type="text" id="email" name="email" placeholder="Enter mst or umsystem Email">
+                <label>Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password">
+                <label>Verify Password</label>
+                <input type="password" id="verify_password" name="confirm_password" placeholder="Verify Password">
+                <input id="submit_button" type="submit" value="REGISTER">
+            </form>
+        </div>
+        <div> {{ error }} </div>
+    </body>
+    {% endblock %}
+</html>

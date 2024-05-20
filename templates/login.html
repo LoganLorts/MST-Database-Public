@@ -1,0 +1,29 @@
+{% extends "Base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block title %}Login{% endblock %}
+            {%block styles%}<link rel="stylesheet" href="../static/styles/Login_style.css">{%endblock%}
+        </title>
+    </head>
+    {% block content %}
+    <body>
+    <h2>
+        <b>User Login</b>
+    </h2><br>
+        <div id="login">
+            <form method="POST">
+                <label>Email</label>
+                <input type="text" id="email" name="email" placeholder="Enter Email">
+                <label>Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password">
+                <input id = "submit_button" type="submit" value="LOGIN">
+                <div class="Register_button"><a href= "{{ url_for('register') }}">Register</a></div>
+                <div class="logout_button"><a href= "{{url_for('logout') }}">Logout </div>
+            </form>
+        </div>
+        <div> {{ error }} </div>
+    </body>
+    {% endblock %}
+</html>

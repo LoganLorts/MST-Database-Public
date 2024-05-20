@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    background-color: #D6D1CA;
+}
+
+nav {
+    background-color: rgb(18, 71, 52);
+}
+a {
+    color: white;
+}
+button {
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid black;
+    display: inline-block;
+    width: 100%;
+}
+#dep_nav_form{
+    text-align: center;
+}
+
+.navbar-toggler {
+    background-color: white;
+    width:auto;
+    height: 50px;
+}
+
+.Search {
+    display: inline-block;
+    width: auto;
+}
+
+.navbar-brand img {
+    width: 50px;
+    height: auto;
+}
+li div.dropdown-menu.show{
+    max-height: 50vh;
+    overflow-y:scroll;
+}
+@media (max-width: 992px) {
+    .navbar-brand img {
+        width: 100px;
+        height: auto;
+    }
+    
+}

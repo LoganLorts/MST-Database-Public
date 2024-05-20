@@ -1,0 +1,97 @@
+body {
+    background-color: #D6D1CA;
+ }
+ 
+ h2 {
+     text-align: center;
+     font-size: 50px;
+     padding: 20px;
+     margin-top: 70px;
+ }
+ 
+ #login {
+     width: 560px;
+     height: 440px;
+     overflow: hidden;
+     margin: auto;
+     margin-top: 30px;
+     padding: 80px;
+     background: rgb(18, 71, 52);
+     border-radius: 15px ;
+ 
+ }
+ 
+ label {
+     font-size: 22px;
+     color: #e1e1e1
+ }
+ 
+ #email {
+     width: 380px;
+     height: 30px;
+     border-radius: 3px;
+     border: none;
+     padding: 6px;
+     margin-bottom: 18px;
+ }
+ 
+ #password {
+     width: 380px;
+     height: 30px;
+     border-radius: 3px;
+     border: none;
+     padding: 6px;
+     margin-bottom: 15px;
+ }
+ 
+ #submit_button{
+     font-size: 22px;
+     width: 380px;
+     height: 40px;
+     border: none;
+     border-radius: 17px;
+     padding-left: 7px;
+     background-color: rgb(87,194, 65);
+     color: #e1e1e1;
+     margin-bottom: 10px;
+ }
+ 
+ .Register_button {
+     text-align: center;
+     width: 100px;
+     height: 25px;
+     border: none;
+     border-radius: 17px;
+     background-color: rgb(87,194, 65);
+     color: #e1e1e1;
+     margin-bottom: 5px;
+ }
+ 
+ .logout_button {
+    text-align: center;
+    width: 100px;
+    height: 25px;
+    border: none;
+    border-radius: 17px;
+    background-color: rgb(87,194, 65);
+    color: #e1e1e1;
+}
+ 
+ @media (max-width: 992px) {
+     #login {
+         width: 440px;
+         height: auto;
+     }
+ 
+     #email{
+         width: 300px;
+     }
+ 
+     #password {
+         width: 300px;
+     }
+     
+     #submit_button {
+         width: 300px;
+     }
+ }

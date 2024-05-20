@@ -1,0 +1,58 @@
+#Rating{
+    justify-content: center;
+    margin-top: 20px;
+    width: 5%;
+}
+#Teacher{
+    justify-content: center;
+    margin-top: 20px;
+    width: 10%
+}
+
+#TeacherRating{
+    justify-content: center;
+    margin-top: 20px;
+    width: 5%;
+}
+
+#WorkloadRating{
+    justify-content: center;
+    margin-top: 20px;
+    width: 5%;
+}
+
+#Comment{
+    justify-content: center;
+    margin-top: 20px;
+    width: 50%;
+    height: 20vw;
+}
+
+@media (max-width: 600px){
+    #Rating{
+        margin-top: 10px;
+        width: 10%;
+        height: 5vw;
+    }
+    #Teacher{
+        margin-top: 10px;
+        width: 15%
+    }
+    
+    #TeacherRating{
+        margin-top: 10px;
+        width: 10%;
+    }
+    
+    #WorkloadRating{
+        margin-top: 10px;
+        width: 10%;
+    }
+    
+    #Comment{
+        margin-top: 10px;
+        width: 70%;
+        height: 20vw;
+    }
+}
+

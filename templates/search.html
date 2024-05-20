@@ -1,0 +1,21 @@
+{% extends "Base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block title %}Classes{% endblock %}
+        </title>
+    </head>
+    {% block content %}
+    <body>
+        <div>{{error}}</div>
+        {% for class in body_classes %}
+        {% set Dep = class[2] %}
+        {% set Code = class[0]|string %}
+        {% set DepCode = Dep + Code %}
+        <div id="class"> <a href="{{url_for('class_page', DepCode=DepCode) }}">{{class[0]}} {{class[1]}} {{class[2]}} </a></div>
+        {% endfor %}
+        </div>
+    </body>
+    {% endblock %}
+</html>

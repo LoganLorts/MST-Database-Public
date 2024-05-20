@@ -1,0 +1,41 @@
+{% extends "Base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block title %}MST Classes{% endblock %}
+            {%block styles%}<link rel="stylesheet" href="../static/styles/Home_style.css">{%endblock%}
+        </title>
+    </head>
+    {% block content %}
+    <body>
+        <span class="divider"></span>
+        <a class="home_img"><img src="static\Logo\20240304 Snake Invasion 19.jpg" alt="Home"> </a>
+        <span class="divider"></span>
+        <div>{{error}} <br></div>
+        <div class="direction">To begin, select a department from the navbar or the dropdown, then select the class. Otherwise, use the search bar with the class code and department</div>
+        <h1>Purpose</h1>
+        <div class="desc">Often times students go into a class without any knowledge about the workload of the quality of the teacher.
+             This makes it difficult to effectively make decisions on which class to take.
+             The purpose of this database is to allow students to be more prepared and informed on the classes they are planning on taking.</div>
+        <div class="disclaimer">This website is completely anonymous.
+             Emails are not accessible.
+              The purpose of this is to allow students to voice their opinions without worry of being identified. </div>
+        <h3><b>Security: </b></h3>
+        <div class="security">Security is a top priority. All emails are hashed, all passwords are hashed and salted.
+            Even as the owner of the database, I am unable to view the users.
+            Emails are only saved as a hash in order to prevent multiple reviews per class and verifying MST email addresses.
+            Forms are encrypted with standard internet protocol POST method, and the server is secure with Apache.</div>
+        <h2>SELECT DEPARTMENT</h2>
+        <div id="select_department">
+            <form action="/department" method="POST">
+                <select name="departments">
+                {% for item in departments %}
+                <option value = "{{ item }}">{{ item }}</option>
+                {% endfor %}
+                <input type="submit" class="select_button" value="SELECT DEPARTMENT">
+            </form>
+        </div>
+    </body>
+    {% endblock %}
+</html>

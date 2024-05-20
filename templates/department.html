@@ -1,0 +1,27 @@
+{% extends "Base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{%block title%} {{ department }} {%endblock%}</title>
+    </head>
+    {% block content %}
+    <body>
+        <div id="department">
+            <h1>{{ department }}</h1>
+            <div class="class">
+            {% for class in classes %}
+                <p> {{ class }} </p>
+            {% endfor %}
+            <div id="select_class">
+                <form action="/{{ department }}/select_class" method="POST">
+                    <select name="classes">
+                    {% for class in classes %}
+                    <option value = "{{ class }}">{{ class }}</option>
+                    {% endfor %}
+                    <input type="submit" value="SELECT CLASS">
+                </form>
+            </div>
+            </div>
+        </div>
+    </body>
+    {% endblock %}
