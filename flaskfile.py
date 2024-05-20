@@ -6,6 +6,7 @@ import hashlib
 from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
+#app.secret_key = 
 @app.before_request
 def before_request():
     db = getattr(g, '_database', None)
