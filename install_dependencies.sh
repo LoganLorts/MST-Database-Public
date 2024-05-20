@@ -7,5 +7,5 @@ apt-get install python3-flask -y
 apt-get install python3-sqlite3 -y
 apt-get install sqlite3 -y
 apt-get install sqlitebrowser -y
-apt-get install python3-werkzeug.exceptions -y
+pip install werkzeug
 #etc.
