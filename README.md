@@ -1,5 +1,9 @@
 # S&T-Database-Project
 Database for class rating system for MST.
+To Do:
+@MST emails not working
+mandatory attendence not properly storing
+login with uncreated accout makes an error
 
 Use SQLite
 sudo apt-get install sqlite3
