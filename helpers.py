@@ -21,6 +21,7 @@ def check_login(email, password):
     else:
         return "Invalid password"
     
+    
 def check_if_admin(email):
     db = getattr(g, '_database', None)
     if db is None:
@@ -44,6 +45,7 @@ def get_all_classes(Department):
     cursor.close()
     return all_data
 
+
 def get_reviews(classCode, classDep):
     db = getattr(g, '_database', None)
     if db is None:
@@ -54,6 +56,7 @@ def get_reviews(classCode, classDep):
     cursor.close()
     return all_data
 
+
 def get_review_admin(classCode, classDep):
     db = getattr(g, '_database', None)
     if db is None:
@@ -63,6 +66,8 @@ def get_review_admin(classCode, classDep):
     all_data = cursor.fetchall()
     cursor.close()
     return all_data
+
+
 def get_avg_rating(classCode, classDep):
     db = getattr(g, '_database', None)
     if db is None:
@@ -72,6 +77,7 @@ def get_avg_rating(classCode, classDep):
     all_data = cursor.fetchall()
     cursor.close()
     return all_data
+
 
 def get_class(classCode, classDep):
     db = getattr(g, '_database', None)
@@ -83,6 +89,7 @@ def get_class(classCode, classDep):
     cursor.close()
     return all_data
 
+
 def get_users():
     db = getattr(g, '_database', None)
     if db is None:
@@ -93,6 +100,7 @@ def get_users():
     cursor.close()
     return all_data
 
+
 def get_user(email):
     db = getattr(g, '_database', None)
     if db is None:
@@ -102,6 +110,7 @@ def get_user(email):
     user = cursor.fetchall()
     cursor.close()
     return user
+
 
 def search_db(class_num, class_title):
     db = getattr(g, '_database', None)

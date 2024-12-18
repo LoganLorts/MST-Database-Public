@@ -6,7 +6,7 @@ import hashlib
 from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
-#app.secret_key = 
+app.secret_key = 'super secret key'
 @app.before_request
 def before_request():
     db = getattr(g, '_database', None)
@@ -21,7 +21,7 @@ def before_request():
         departments = [x[0] for x in departments]
         app.jinja_env.globals.update({
         'departments': departments
-        })   
+        })
     if 'username' in session:
         global username
         username = session['username']
@@ -47,13 +47,16 @@ def before_request():
     'select_class': select_class
     })
     
+    
 @app.route('/')
 def home():
     return render_template('index.html')
 
+
 @app.route('/register', methods=['GET'])
 def register():
     return render_template('register.html', success = "Registered successfully")   
+
 
 @app.route('/register', methods=['POST'])
 def check_register():
@@ -71,7 +74,7 @@ def check_register():
     salt = bcrypt.gensalt()
     email = hashlib.sha256(email.encode('utf-8')).hexdigest()
     password = bcrypt.hashpw(password.encode('utf-8'), salt)
-    print(get_user(email))
+    #print(get_user(email))
     if get_user(email):
         return render_template('register.html', error = "Email already in use")
     db = getattr(g, '_database', None)
@@ -84,6 +87,7 @@ def check_register():
     db.commit()
     cursor.close()
     return render_template('register.html', error = "Registered successfully")
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -99,11 +103,13 @@ def login():
             return redirect(url_for('admin'), code=307)
     return render_template('login.html', error = error)
     
+    
 @app.route('/admin', methods=['POST'])
 def admin():
     if session.get('admin') == None:
         return redirect(url_for('home'))
     return render_template('admin.html', reviews = [])
+
 
 @app.route('/Db_add', methods=['POST'])
 def Db_add():
@@ -127,7 +133,7 @@ def Db_add():
         if cursor.fetchone()[0] == 1:
             cursor.close()
             return render_template('admin.html', error = "Class already exists")
-        cursor.execute("INSERT INTO CLASS (ClassCode, ClassTitle, ClassDep, Description) VALUES (?, ?, ?, ?)", (classCode, classTitle, classDep, Description))
+        cursor.execute("INSERT OR REPLACE INTO CLASS (ClassCode, ClassTitle, ClassDep, Description) VALUES (?, ?, ?, ?)", (classCode, classTitle, classDep, Description))
         db.commit()
         cursor.close()
     elif(request.form["submit"] == "submit_teacher"):
@@ -165,7 +171,8 @@ def Db_add():
         return render_template('admin.html', reviews = [])
 
     return redirect(url_for('admin'), code=307)
-
+    
+    
 @app.route('/logout')
 def logout():
     session.pop('username', None)
@@ -233,30 +240,9 @@ def search():
         app.jinja_env.globals.update({
         'classes': j_classes
         })
+        #print(classes)
         return render_template('search.html', body_classes = classes)
         
-        
-#from itsdangerous import URLSafeTimedSerializer
-
-#from project import app
-
-
-#def generate_confirmation_token(email):
-    #serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
-    #return serializer.dumps(email, salt=app.config['SECURITY_PASSWORD_SALT'])
-
-
-#def confirm_token(token, expiration=3600):
-    #serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
-    #try:
-        #email = serializer.loads(
-            #token,
-            #salt=app.config['SECURITY_PASSWORD_SALT'],
-            #max_age=expiration
-        #)
-    #except:
-        #return False
-    #return email
 
 @app.route('/department', methods=['POST'])
 def select_department():
@@ -265,6 +251,7 @@ def select_department():
         'department': department
         })
     return redirect(url_for('department_page', Department=department))
+
 
 @app.route('/<Department>/department_page' , methods=['GET'])
 def department_page(Department):
@@ -278,22 +265,41 @@ def department_page(Department):
     })
     return render_template('department.html',  department= Department, classes = classes)
 
+
 @app.route('/<department>/select_class', methods=['POST'])
 def select_class(department):
     classInfo = request.form['classes']
-    classCode = classInfo.split()[0]
-    classDep = department
-    select_class = classInfo
-    app.jinja_env.globals.update({
-        'select_class': select_class
-        })
-    return redirect(url_for('class_page', DepCode=classDep+classCode))
+    try:
+        classCode = classInfo.split()[0]
+        classDep = department
+        select_class = classInfo
+        app.jinja_env.globals.update({
+            'select_class': select_class
+            })
+        return redirect(url_for('class_page', DepCode=classDep+classCode))
+    except:
+        return redirect(url_for('department_page', Department=department))
+
 
 @app.route('/<DepCode>/class_page' , methods=['GET'])
 def class_page(DepCode):
+    #print(DepCode)
     Department = DepCode[:-4]
     ClassCode = DepCode[-4:]
+    app.jinja_env.globals.update({
+    'department': Department
+    })
+    classes = get_all_classes(Department)
+    classes = [str(x[0]) + " " + x[1] for x in classes]
+    app.jinja_env.globals.update({
+    'classes': classes
+    })
+    app.jinja_env.globals.update({
+    'select_class': "Classes"
+    })
     information = get_class(ClassCode, Department)
+    #print(information)
+    #print(information[0])
     try:
         information = information[0]
         reviews = get_reviews(ClassCode, Department)
@@ -301,6 +307,7 @@ def class_page(DepCode):
         return render_template('class.html', select_class = (str(information[1]) +" "+ information[2]), class_info = information[0], class_code = information[1], class_name=information[2], reviews=reviews, avg=avg)
     except:
         return redirect(url_for(home))
+
 
 @app.route('/<DepCode>/review', methods=['GET','POST'])
 def review(DepCode):
@@ -341,6 +348,7 @@ def review(DepCode):
             cursor.close()
             return redirect(url_for('class_page', DepCode=DepCode))
 
+
 @app.errorhandler(HTTPException)
 def http_error_handler(error):
     return redirect(url_for('home'))
@@ -351,6 +359,7 @@ def close_connection(exception):
     db = getattr(g, '_database', None)
     if db is not None:
         db.close()
+    
         
 if __name__ == '__main__':
     app.run(debug=True)

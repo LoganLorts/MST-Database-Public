@@ -1,0 +1,53 @@
+/undergraduate/courselist/aero-eng, Aerospace Engineering (AERO ENG) Courses
+/undergraduate/courselist/arch-eng, Architectural Engineering (ARCH ENG) Courses
+/undergraduate/courselist/art, Art (ART) Courses
+/undergraduate/courselist/bio-sci, Biological Sciences (BIO SCI) Courses
+/undergraduate/courselist/bus, Business (BUS) Courses
+/undergraduate/courselist/cer-eng, Ceramic Engineering (CER ENG) Courses
+/undergraduate/courselist/chem-eng, Chemical Engineering (CHEM ENG) Courses
+/undergraduate/courselist/chem, Chemistry (CHEM) Courses
+/undergraduate/courselist/civ-eng, Civil Engineering (CIV ENG) Courses
+/undergraduate/courselist/comp-eng, Computer Engineering (COMP ENG) Courses
+/undergraduate/courselist/comp-sci, Computer Science (COMP SCI) Courses
+/undergraduate/courselist/econ, Economics (ECON) Courses
+/undergraduate/courselist/educ, Education (EDUC) Courses
+/undergraduate/courselist/elec-eng, Electrical Engineering (ELEC ENG) Courses
+/undergraduate/courselist/eng-mgt, Engineering Management (ENG MGT) Courses
+/undergraduate/courselist/english, English (ENGLISH) Courses
+/undergraduate/courselist/erp, Enterprise Resource Planning (ERP) Courses
+/undergraduate/courselist/env-eng, Environmental Engineering (ENV ENG) Courses
+/undergraduate/courselist/etym, Etymology (ETYM) Courses
+/undergraduate/courselist/exp-eng, Explosives Engineering (EXP ENG) Courses
+/undergraduate/courselist/finance, Finance (FINANCE) Courses
+/undergraduate/courselist/french, French (FRENCH) Courses
+/undergraduate/courselist/fr-eng, Freshman Engineering (FR ENG) Courses
+/undergraduate/courselist/geo-eng, Geological Engineering (GEO ENG) Courses
+/undergraduate/courselist/geology, Geology (GEOLOGY) Courses
+/undergraduate/courselist/geophys, Geophysics (GEOPHYS) Courses
+/undergraduate/courselist/german, German (GERMAN) Courses
+/undergraduate/courselist/history, History (HISTORY) Courses
+/undergraduate/courselist/is-t, Info Science &amp; Technology (IS&amp;T) Courses
+/undergraduate/courselist/mkt, Marketing (MKT) Courses
+/undergraduate/courselist/ms-e, Materials Science &amp; Eng (MS&amp;E) Courses
+/undergraduate/courselist/math, Mathematics (MATH) Courses
+/undergraduate/courselist/mech-eng, Mechanical Engineering (MECH ENG) Courses
+/undergraduate/courselist/met-eng, Metallurgical Engineering (MET ENG) Courses
+/undergraduate/courselist/mil-air, Military Science - Air Force (MIL AIR) Courses
+/undergraduate/courselist/mil-army, Military Science - Army (MIL ARMY) Courses
+/undergraduate/courselist/min-eng, Mining Engineering (MIN ENG) Courses
+/undergraduate/courselist/music, Music (MUSIC) Courses
+/undergraduate/courselist/nuc-eng, Nuclear Engineering (NUC ENG) Courses
+/undergraduate/courselist/pet-eng, Petroleum Engineering (PET ENG) Courses
+/undergraduate/courselist/philos, Philosophy (PHILOS) Courses
+/undergraduate/courselist/phys-ed, Physical Education (PHYS ED) Courses
+/undergraduate/courselist/physics, Physics (PHYSICS) Courses
+/undergraduate/courselist/pol-sci, Political Science (POL SCI) Courses
+/undergraduate/courselist/premed, Pre-Medicine (PREMED) Courses
+/undergraduate/courselist/psych, Psychology (PSYCH) Courses
+/undergraduate/courselist/russian, Russian (RUSSIAN) Courses
+/undergraduate/courselist/spanish, Spanish (SPANISH) Courses
+/undergraduate/courselist/sp-m-s, Speech &amp; Media Studies (SP&amp;M S) Courses
+/undergraduate/courselist/stat, Statistics (STAT) Courses
+/undergraduate/courselist/sys-eng, Systems Engineering (SYS ENG) Courses
+/undergraduate/courselist/tch-com, Technical Communication (TCH COM) Courses
+/undergraduate/courselist/theatre, Theatre (THEATRE) Courses
